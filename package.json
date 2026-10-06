@@ -1,6 +1,6 @@
 {
-  "name": "contact-app",
-  "homepage": "https://thinkphp.github.io/contact-form-react",
+  "name": "react-contact-form",
+  "homepage": "https://thinkphp.github.io/react-contact-form",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
