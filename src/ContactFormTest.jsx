@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './App.css'
 
 export default function ContactFormTest({ endpoint = '/api/contact', className = '' }) {
   const [name, setName] = useState('')
@@ -55,48 +56,44 @@ export default function ContactFormTest({ endpoint = '/api/contact', className =
   }
 
   return (
-    <div className={`max-w-md mx-auto p-4 bg-white rounded-xl shadow ${className}`}>
-      <h2 className="text-xl font-semibold mb-4">Contact</h2>
-      <form onSubmit={handleSubmit}>
-        <label className="block mb-3">
-          <span className="text-sm">Nume</span>
+    <section className={`contact-test ${className}`}>
+      <h2>Contact</h2>
+      <form className="contact-test__fields" onSubmit={handleSubmit}>
+        <label className="form-field">
+          <span>Nume</span>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 w-full border rounded p-2"
             required
           />
         </label>
 
-        <label className="block mb-3">
-          <span className="text-sm">Telefon</span>
+        <label className="form-field">
+          <span>Telefon</span>
           <input
             type="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="mt-1 w-full border rounded p-2"
             required
           />
         </label>
 
-        <label className="block mb-3">
-          <span className="text-sm">Email</span>
+        <label className="form-field">
+          <span>Email</span>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 w-full border rounded p-2"
             required
           />
         </label>
 
-        <label className="block mb-3">
-          <span className="text-sm">Mesaj</span>
+        <label className="form-field">
+          <span>Mesaj</span>
           <textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="mt-1 w-full border rounded p-2 min-h-[100px]"
             required
           />
         </label>
@@ -104,15 +101,14 @@ export default function ContactFormTest({ endpoint = '/api/contact', className =
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-2 px-4 bg-indigo-600 text-white rounded hover:bg-indigo-700 disabled:opacity-60"
+          className="contact-test__button"
         >
           {loading ? 'Se trimite...' : 'Trimite'}
         </button>
 
-        {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
-        {success && <p className="mt-3 text-sm text-green-600">{success}</p>}
+        {error && <p className="contact-test__message contact-test__message--error">{error}</p>}
+        {success && <p className="contact-test__message contact-test__message--success">{success}</p>}
       </form>
-    </div>
+    </section>
   )
 }
-
